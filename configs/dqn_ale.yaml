@@ -1,0 +1,49 @@
+# DQN hyperparams, matches Rainbow.
+# Follows hyperparams from Dopamine:
+# github.com/google/dopamine/blob/master/dopamine/agents/dqn/configs/dqn.gin
+# with one exception, the env signals done after loss of life.
+
+experiment: DQN
+device: cuda
+
+game: pong
+stochasticity: "random_starts"
+agent:
+  name: DQN
+  args_:
+    epsilon: [linear, 1.0, 0.01, 250000, 20000]
+    gamma: 0.99
+    loss_fn: "SmoothL1Loss"
+  save: yes
+
+epoch_cnt: 200
+train_step_cnt: 250000
+
+update_freq: 4
+target_update_freq: 8000
+
+valid_step_cnt: 125000
+val_epsilon: 0.001  # validation epsilone greedy
+
+replay_:
+  capacity: 1000000
+  batch_size: 32
+  hist_len: 4
+  warmup_steps: 20000
+  device: cpu
+estimator:
+  name: AtariNet
+  args_:
+    hidden_size: 512
+    hist_len: 4
+    spectral: -2L,-3L  # Usage: -1 or -2 or combined -1,-2,-3.
+    initializer: "xavier_uniform"  # this field can be missing
+optim:
+  name: "RMSprop"
+  div_by_rho: no
+  args_:
+    lr: 0.00025
+    alpha: 0.95
+    momentum: 0.0
+    eps: 0.00001
+    centered: True

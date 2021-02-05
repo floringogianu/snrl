@@ -1,0 +1,25 @@
+experiment: DEV-DEBUG
+game: catch/1
+spectral: null
+device: cuda
+gamma: 0.99
+epsilon: 0.05
+update_freq: 1
+target_update_freq: 4
+valid_freq: null
+valid_episodes: 1000
+
+estimator_:
+  layers: [64, 64]  # output dims of hidden layers
+  support: [-1, 1, 9]
+replay_:
+  capacity: 10000
+  batch_size: 32
+  hist_len: 1
+  warmup_steps: 100
+  device: cpu
+optim:
+  name: "Adam"
+  kwargs_:
+    lr: 0.001
+    # eps: 0.0003125

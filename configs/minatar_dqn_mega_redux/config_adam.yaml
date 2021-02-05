@@ -1,0 +1,21 @@
+# DQN Minatar RMSProp
+
+game: [MinAtar-breakout, MinAtar-asterix, MinAtar-seaquest, MinAtar-space_invaders]
+
+estimator:
+  args_:
+    layer_dims:
+      - [[24], [128]]
+      - [[24, 24], [128]]
+      - [[32, 32], [256]]
+      - [[24, 24, 24], [128]]
+      - [[32, 32, 32], [256]]
+      - [[24, 24, 24, 24], [128]]
+
+    spectral: [null, "-2", "-2,-3"]
+
+optim:
+  name: ["Adam"]
+  args_:
+    lr: [0.0000100, 0.0000215, 0.0000464, 0.0001000, 0.0002154, 0.0004642, 0.0010000, 0.0021544]
+    eps: [0.0001, 0.00032, 0.001, 0.00316, 0.01]

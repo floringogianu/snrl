@@ -1,0 +1,4 @@
+estimator:
+  args_:
+    layers: [[64, 64, 64], [128, 128, 128]]
+    spectral: [null, fc2, fc1+fc2]

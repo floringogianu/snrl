@@ -1,0 +1,46 @@
+# Default hyperparams
+# Follows hyperparams from Dopamine:
+# https://github.com/google/dopamine/blob/master/dopamine/agents/rainbow/configs/c51.gin
+
+experiment: MinAtar-DQN
+device: cuda
+
+game: MinAtar-asterix
+agent:
+  name: DQN
+  args_:
+    epsilon: [linear, 1.0, 0.01, 250000, 5000]
+    gamma: 0.99
+    loss_fn: SmoothL1Loss
+    div_grad_by_rho: no
+    grad_penalty:
+      k: 2.0
+      beta: 1.0
+  save: yes
+
+epoch_cnt: 20
+train_step_cnt: 100000
+
+update_freq: 4
+target_update_freq: 4000
+
+valid_step_cnt: 125000
+val_epsilon: 0.001  # validation epsilone greedy
+
+replay_:
+  capacity: 100000
+  batch_size: 32
+  hist_len: 1
+  device: cpu
+estimator:
+  name: MinAtarNet
+  args_:
+    layer_dims: [[32, 32], [128]]
+    batch_norm: no
+
+optim:
+  name: "Adam"
+  div_by_rho: no
+  args_:
+    lr: 0.00025
+    eps: 0.0003125

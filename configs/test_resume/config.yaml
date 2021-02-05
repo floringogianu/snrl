@@ -1,0 +1,5 @@
+# Default hyperparams
+# Follows hyperparams from Dopamine:
+# https://github.com/google/dopamine/blob/master/dopamine/agents/rainbow/configs/c51.gin
+
+game: ["pong", "alien"]

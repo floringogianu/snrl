@@ -1,0 +1,6 @@
+
+game: [MinAtar-breakout, MinAtar-asterix, MinAtar-seaquest, MinAtar-space_invaders]
+
+estimator:
+  args_:
+    spectral: ["-1L", "-2L", "-3L", "-1L,-2L","-2L,-3L", "-1L,-2L,-3L"]

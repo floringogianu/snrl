@@ -1,0 +1,23 @@
+# Default hyperparams
+# Follows hyperparams from Dopamine:
+# https://github.com/google/dopamine/blob/master/dopamine/agents/rainbow/configs/c51.gin
+
+game: ['alien',
+ 'assault',
+ 'bank_heist',
+ 'battle_zone',
+ 'boxing',
+ 'breakout',
+ 'centipede',
+ 'crazy_climber',
+ 'frostbite',
+ 'hero',
+ 'journey_escape',
+ 'ms_pacman',
+ 'qbert',
+ 'road_runner',
+ 'solaris',
+ 'space_invaders',
+ 'star_gunner',
+ 'yars_revenge']
+spectral: ["middle", null]

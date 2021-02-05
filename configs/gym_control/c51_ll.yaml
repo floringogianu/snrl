@@ -1,0 +1,41 @@
+# Default hyperparams
+# Follows hyperparams from Dopamine:
+# https://github.com/google/dopamine/blob/master/dopamine/agents/rainbow/configs/c51.gin
+
+experiment: DEV-DEBUG
+device: cuda
+
+game: LunarLander-v2
+agent:
+  name: C51
+  args_:
+    epsilon: ["log", 1.0, 0.1, 100000, 1000]
+    gamma: 0.99
+    # clip_grad_norm: no
+  save: no
+
+epoch_cnt: 50
+train_step_cnt: 10000
+
+update_freq: 4
+target_update_freq: 1024
+
+valid_step_cnt: 50000
+val_epsilon: 0.001  # validation epsilone greedy
+
+replay_:
+  capacity: 100000
+  batch_size: 32
+  hist_len: 1
+  device: cpu
+estimator:
+  name: MLP
+  args_:
+    layers: [64, 64]  # output dims of hidden layers
+    support: [-10, 10, 51]
+    spectral: null
+optim:
+  name: "Adam"
+  args_:
+    lr: 0.001
+    # eps: 0.0003125

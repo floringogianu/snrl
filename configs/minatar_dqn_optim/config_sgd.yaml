@@ -1,0 +1,16 @@
+# DQN Minatar SGD
+
+game: [MinAtar-breakout, MinAtar-asterix, MinAtar-seaquest, MinAtar-space_invaders]
+
+estimator:
+  args_:
+    layer_dims:
+      - [[24], [128]]
+      - [[24, 24, 24], [128]]
+
+    spectral: [null, "-2", "-2,-3"]
+
+optim:
+  name: ["SGD"]
+  args_:
+    lr: [0.1, 0.00025]

@@ -1,0 +1,42 @@
+# Default hyperparams
+# Follows hyperparams from Dopamine:
+# https://github.com/google/dopamine/blob/master/dopamine/agents/rainbow/configs/c51.gin
+
+experiment: MinAtar
+device: cuda
+
+game: MinAtar-breakout
+stochasticity: "random_starts"
+agent:
+  name: C51
+  args_:
+    epsilon: [linear, 1.0, 0.01, 250000, 5000]
+    gamma: 0.99
+    clip_grad_norm: no
+  save: yes
+
+epoch_cnt: 20
+train_step_cnt: 250000
+
+update_freq: 1
+target_update_freq: 1000
+
+valid_step_cnt: 125000
+val_epsilon: 0.001  # validation epsilone greedy
+
+replay_:
+  capacity: 100000
+  batch_size: 32
+  hist_len: 1
+  device: cpu
+estimator:
+  name: MinAtarNet
+  args_:
+    support: [-10, 10, 51]
+    spectral: null  # Usage: c0+c1+c2+fc+out, fc, c2+out, etc. Old API works: middle=fc, full=c0+c1+c2+fc+out, conv.
+    initializer: "xavier_uniform"  # this field can be missing
+optim:
+  name: "Adam"
+  args_:
+    lr: 0.00025
+    eps: 0.0003125

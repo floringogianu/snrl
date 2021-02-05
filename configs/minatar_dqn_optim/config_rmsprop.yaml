@@ -1,0 +1,19 @@
+# DQN Minatar RMSProp
+
+game: [MinAtar-breakout, MinAtar-asterix, MinAtar-seaquest, MinAtar-space_invaders]
+
+estimator:
+  args_:
+    layer_dims:
+      - [[24], [128]]
+      - [[24, 24, 24], [128]]
+
+    spectral: [null, "-2", "-2,-3"]
+
+optim:
+  name: ["RMSprop"]
+  args_:
+    lr: [0.1, 0.00025]
+    alpha: [0.95]
+    eps: [0.01, 0.0003125]
+    centered: [True, False]

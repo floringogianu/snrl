@@ -1,0 +1,8 @@
+# DQN hyperparams as in the Nature paper. Follows hyperparams from Dopamine:
+# github.com/google/dopamine/blob/master/dopamine/agents/dqn/configs/dqn_nature.gin
+
+game: [alien, beam_rider, breakout, centipede, enduro, hero, kung_fu_master, ms_pacman, qbert, space_invaders]
+
+estimator:
+  args_:
+    spectral: [null, "-2", "-3", "-4", "-5", "-2,-3", "-2,-3,-4", "-2,-3,-4,-5", "-3,-4,-5", "-4,-5"]

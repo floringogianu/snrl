@@ -1,0 +1,15 @@
+agent:
+  args_:
+    epsilon: 
+      - ["linear", 1.0, 0.1, 50000, 5000]
+      - ["linear", 1.0, 0.1, 100000, 5000]
+
+target_update_freq: [64, 512, 2048]
+
+estimator:
+  args_:
+    support:
+      - [-1, 1, 51]
+      - [-100, 100, 51]
+      - [-1, 1, 11]
+      - [-10, 10, 11]

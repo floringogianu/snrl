@@ -1,0 +1,37 @@
+# Default hyperparams
+
+experiment: ll-sVb
+device: cpu
+
+game: LunarLander-v2
+agent:
+  name: C51
+  args_:
+    epsilon: ["linear", 1.0, 0.1, 50000, 5000]
+    gamma: 0.99
+  save: no
+
+epoch_cnt: 100
+train_step_cnt: 10000
+
+update_freq: 4
+target_update_freq: 512
+
+valid_step_cnt: 50000
+val_epsilon: 0.001  # validation epsilone greedy
+
+replay_:
+  capacity: 100000
+  batch_size: 32
+  hist_len: 1
+  device: cpu
+estimator:
+  name: MLP
+  args_:
+    layers: [64, 64]  # output dims of hidden layers
+    spectral: null
+    support: [-10, 10, 51]
+optim:
+  name: "Adam"
+  args_:
+    lr: 0.001

@@ -1,0 +1,26 @@
+# Default hyperparams
+# Follows hyperparams from Dopamine:
+# https://github.com/google/dopamine/blob/master/dopamine/agents/rainbow/configs/c51.gin
+
+experiment: test_resume
+game: pong
+spectral: None
+clip_grad_norm: no
+
+device: cuda
+mem_device: cpu
+epoch_cnt: 200
+train_step_cnt: 250000
+valid_step_cnt: 125000
+warmup_steps: 20000
+update_freq: 4
+target_update_freq: 8000
+batch_size: 32
+gamma: 0.99
+epsilon: [1.0, 0.01, 250000, 20000]
+val_epsilon: 0.001  # validation epsilone greedy
+support: [-10, 10, 51]
+channel_cnt: 1
+hist_len: 4
+lr: 0.00025
+optim_eps: 0.0003125

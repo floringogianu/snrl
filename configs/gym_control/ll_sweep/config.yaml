@@ -1,0 +1,15 @@
+agent:
+  args_:
+    epsilon:
+      - ["linear", 1.0, 0.1, 5000, 5000]
+      - ["linear", 1.0, 0.1, 50000, 5000]
+      - ["linear", 1.0, 0.1, 100000, 5000]
+    gamma: [0.92, 0.95, 0.99]
+    is_double: [yes, no]
+
+target_update_freq: [4, 128, 512, 2048]
+
+optim:
+  args_:
+    eps: [0.00000001, 0.0003125]
+  

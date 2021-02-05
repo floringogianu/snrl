@@ -1,0 +1,14 @@
+# Default hyperparams
+# Follows hyperparams from Dopamine:
+# https://github.com/google/dopamine/blob/master/dopamine/agents/rainbow/configs/c51.gin
+
+game: ['alien',
+  'beam_rider',
+  'breakout',
+  'hero',
+  'kung_fu_master',
+  'ms_pacman',
+  'centipede',
+  'enduro',
+  'qbert',
+  'space_invaders']
