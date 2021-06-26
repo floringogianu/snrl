@@ -14,7 +14,7 @@ from src.replay import ExperienceReplay
 from src.rl_routines import Episode
 from src.wrappers import TorchWrapper
 
-
+# create def experiment_factory(opt, only_env=False):
 def experiment_factory(opt, only_env=False):
     env = gym_wrapper.GymFromDMEnv(bsuite.load_from_id(opt.env.name))
     env = TorchWrapper(env, opt.device)
@@ -41,7 +41,7 @@ def experiment_factory(opt, only_env=False):
     rlog.info(estimator)
     return env, (replay, policy_improvement, policy_evaluation)
 
-
+# create def game_settings_(opt):
 def game_settings_(opt):
     env = {
         "name": opt.game,
@@ -54,7 +54,7 @@ def game_settings_(opt):
         opt.valid_freq = int(opt.env.episodes / 20)
     return opt
 
-
+# create def train_one_ep(env, agent, steps, update_freq, target_update_freq):
 def train_one_ep(env, agent, steps, update_freq, target_update_freq):
     """ Train the agent for one episode. """
     replay, policy, policy_evaluation = agent
@@ -81,7 +81,7 @@ def train_one_ep(env, agent, steps, update_freq, target_update_freq):
         rlog.put(trn_reward=reward, trn_done=done)
     return steps
 
-
+# create def validate(env, agent, valid_ep_cnt):
 def validate(env, agent, valid_ep_cnt):
     """ Validate the agent. """
     _, policy, _ = agent
@@ -100,7 +100,7 @@ def validate(env, agent, valid_ep_cnt):
     env.close()
     return ep_rw
 
-
+# create def run(opt):
 def run(opt):
     """ Entry Point. """
 
@@ -129,7 +129,7 @@ def run(opt):
             validate(env, agent, opt.valid_episodes)
             rlog.traceAndLog(ep)
 
-
+# create def main():
 def main():
     """ Liftoff
     """
@@ -137,4 +137,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main() # close
